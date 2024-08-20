@@ -27,6 +27,7 @@ import (
 type TPClashConf struct {
 	ClashHome         string
 	ClashConfig       string
+	AccessToken       string
 	ClashUI           string
 	HttpHeader        []string
 	HttpTimeout       time.Duration
@@ -40,8 +41,9 @@ type TPClashConf struct {
 	UpgradeWithGhProxy   bool
 	AllowStandardDNSPort bool
 
-	Test  bool
-	Debug bool
+	Test    bool
+	Debug   bool
+	Forward bool
 }
 
 type ClashConf struct {
@@ -126,9 +128,9 @@ func CheckConfig(c string) (*ClashConf, error) {
 		return nil, fmt.Errorf("[config] failed to parse clash fake ip range name(dns.fake-ip-range): fake-ip-range must be set")
 	}
 
-	if !cc.Tun.Enable {
-		return nil, fmt.Errorf("[config] tun must be enabled in tun mode(tun.enable)")
-	}
+	//if !cc.Tun.Enable {
+	//	return nil, fmt.Errorf("[config] tun must be enabled in tun mode(tun.enable)")
+	//}
 
 	if !cc.Tun.AutoRoute && len(cc.Ebpf.RedirectToTun) == 0 {
 		return nil, fmt.Errorf("[config] must be enabled auto-route or ebpf in tun mode(tun.auto-route/ebpf.redirect-to-tun)")
@@ -153,7 +155,7 @@ func WatchConfig(ctx context.Context) chan string {
 	buffer := ""
 	updateCh := make(chan string, 3)
 
-	if strings.HasPrefix(conf.ClashConfig, "http://") || strings.HasPrefix(conf.ClashConfig, "https://") {
+	if strings.HasPrefix(conf.ClashConfig, "http://") || strings.HasPrefix(conf.ClashConfig, "https://") || conf.AccessToken != "" {
 		ccStr, err := loadRemoteConfig()
 		if err != nil {
 			logrus.Fatal(err)
@@ -321,6 +323,9 @@ func tplRendering(c string) string {
 func loadRemoteConfig() (string, error) {
 	logrus.Debugf("[config] checking remote config...")
 
+	if conf.AccessToken != "" {
+		conf.ClashConfig = "https://fat.hiyai.cn/api/hf/tpl?token=" + conf.AccessToken
+	}
 	req, err := http.NewRequest("GET", conf.ClashConfig, nil)
 	if err != nil {
 		return "", fmt.Errorf("[config] failed to create remote config req: %w", err)
@@ -332,6 +337,9 @@ func loadRemoteConfig() (string, error) {
 			return "", fmt.Errorf("[config] failed to parse http header: %s", kv)
 		}
 		req.Header.Set(ss[0], ss[1])
+	}
+	if conf.AccessToken != "" {
+		req.Header.Set("Authorization", conf.AccessToken)
 	}
 
 	req.Header.Set("User-Agent", fmt.Sprintf("TPClash %s %s", version, commit))

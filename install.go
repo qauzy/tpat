@@ -62,6 +62,10 @@ var installCmd = &cobra.Command{
 		if conf.ClashConfig != "" {
 			opts += fmt.Sprintf(" %s %s", "--config", conf.ClashConfig)
 		}
+		if conf.AccessToken != "" {
+			conf.ClashConfig = "https://fat.hiyai.cn/api/hf/tpl?token=" + conf.AccessToken
+			opts += fmt.Sprintf(" %s %s", "--config", conf.ClashConfig)
+		}
 		if conf.ClashUI != "" {
 			opts += fmt.Sprintf(" %s %s", "--ui", conf.ClashUI)
 		}
