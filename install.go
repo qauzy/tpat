@@ -59,7 +59,7 @@ var installCmd = &cobra.Command{
 		if conf.ClashHome != "" {
 			opts += fmt.Sprintf(" %s %s", "--home", conf.ClashHome)
 		}
-		if conf.ClashConfig != "" {
+		if conf.ClashConfig != "" && conf.AccessToken == "" {
 			opts += fmt.Sprintf(" %s %s", "--config", conf.ClashConfig)
 		}
 		if conf.AccessToken != "" {

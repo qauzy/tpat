@@ -1,4 +1,4 @@
-name: TPClash Release
+name: TPat Release
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: TPClash
+name: TPat
 
 on:
   workflow_dispatch:
@@ -59,4 +59,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: tpclash-${{ steps.timestamp.outputs.date }}
-        path: build 
+        path: build
+    - name: upload file to exist release
+      uses: qauzy/action-gitee-release@1.0.0
+      with:
+        gitee_owner: qauzy
+        gitee_repo: drat
+        gitee_token: ${{ secrets.gitee_token }}
+        gitee_release_id: 406277
+        gitee_files: |
+          ./build/tpclash-mat-linux-amd64
+          ./build/tpclash-mat-linux-amd64
