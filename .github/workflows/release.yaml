@@ -95,4 +95,4 @@ jobs:
 
             ${{ secrets.RELEASE_INFO }}
 
-            https://github.com/TPClash/tpclash/releases/tag/${{ steps.extract_tag.outputs.tag_name }}
+            https://github.com/qauzy/tpat/releases/tag/${{ steps.extract_tag.outputs.tag_name }}

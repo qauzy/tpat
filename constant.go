@@ -135,12 +135,12 @@ const installedMessage = logo + `  👌 TPClash 安装完成, 您可以使用以
      ● 重载服务配置: systemctl daemon-reload
 
      注：如果您使用的是非 systemd 的 Linux 发行版，请按照以下 systemd 的 service 配置作为参考自行编写。
-     https://github.com/TPClash/tpclash/blob/master/constant.go#L91
+     https://github.com/qauzy/tpat/blob/master/constant.go#L91
 
 
      如有任何问题请开启 issue 或从 Telegram 讨论组反馈
 
-     ● TPClash仓库: https://github.com/TPClash/tpclash
+     ● TPClash仓库: https://github.com/qauzy/tpat
      ● TPClash Telegram 频道: https://t.me/tpclash
      ● TPClash Telegram 讨论组: https://t.me/+98SPc9rmV8w3Mzll
 `
@@ -157,14 +157,14 @@ const uninstallMessage = `
 `
 
 const uninstalledMessage = logo + `  👌 TPClash 已卸载, 如有任何问题请开启 issue 或从 Telegram 讨论组反馈
-     ● TPClash仓库: https://github.com/TPClash/tpclash
+     ● TPClash仓库: https://github.com/qauzy/tpat
      ● TPClash Telegram 频道: https://t.me/tpclash
      ● TPClash Telegram 讨论组: https://t.me/+98SPc9rmV8w3Mzll
 `
 
 const (
 	githubLatestApi   = "https://api.github.com/repos/TPClash/tpclash/releases/latest"
-	githubUpgradeAddr = "https://github.com/TPClash/tpclash/releases/download/v%s/%s"
+	githubUpgradeAddr = "https://github.com/qauzy/tpat/releases/download/v%s/%s"
 	ghProxyAddr       = "https://mirror.ghproxy.com/"
 )
 
@@ -178,5 +178,5 @@ const upgradedMessage = logo + `  👌 TPClash 已升级完成, 请重新启动�
      ● 重载服务配置: systemctl daemon-reload
 
      注：如果您使用的是非 systemd 的 Linux 发行版，请按照以下 systemd 的 service 配置作为参考自行编写。
-     https://github.com/TPClash/tpclash/blob/master/constant.go#L91
+     https://github.com/qauzy/tpat/blob/master/constant.go#L91
 `

@@ -50,7 +50,7 @@ TPClash 可以自动安装 ~~Clash Premium~~（已停更）/ Mihomo, 并自动�
 TPClash 项目内的 `Taskfile.yaml` 内已经写好了自动编译脚本, 只需要执行 `task` 命令即可:
 
 ```sh
-git clone https://github.com/TPClash/tpclash.git
+git clone https://github.com/qauzy/tpat.git
 cd tpclash
 task # go-task 安装成功后会包含此命令
 ```

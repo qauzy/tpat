@@ -1,8 +1,8 @@
 version: '3'
 
 vars:
-  PROXY:
-    -x http://127.0.0.1:7890
+#  PROXY:
+#    -x http://127.0.0.1:7890
   VERSION:
     sh: git describe --tags --always
   COMMIT_SHA:
