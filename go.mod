@@ -9,7 +9,7 @@ require (
 	github.com/docker/docker v25.0.3+incompatible
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/google/nftables v0.2.0
-	github.com/hashicorp/go-version v1.6.0
+	github.com/hashicorp/go-version v1.7.0
 	github.com/lorenzosaino/go-sysctl v0.3.1
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.0
